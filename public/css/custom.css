@@ -1,0 +1,38 @@
+@import "bootstrap.css";
+
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+.table .page{
+	display: inline;
+}
+
+.table-striped  .list > a:nth-child(odd){
+	background-color: rgba(100, 100, 100, 0.1);
+}
+
+.table .sort, .summary{
+	cursor: pointer;
+}
+
+.table .row > div{
+	padding: 8px;
+	line-height: 18px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.list{
+	min-height: 530px;
+}
+
+.pagination{
+	margin: 0;
+}
+
+.summary{
+	background-color: #33B5E5;
+	color: white;
+	text-align: center;
+}

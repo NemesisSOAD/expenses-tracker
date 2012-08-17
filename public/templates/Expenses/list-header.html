@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="input-append span8">
+		<input class="fuzzy-search span7" type="text" placeholder="Search thru expenses">
+		<span class="add-on"><i class="icon-search"></i></span>
+	</div>
+	<div class="span3">
+		<div id="paidFilter" class="btn-group" data-toggle="buttons-radio">
+			<% for(var i = 0; i < paidFilters.length; i++){ %>
+				<button class="btn <% if (activeFilter == i){%>active<%}%>" data-filterId="<%= i %>"><%= paidFilters[i] %></button>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div id="tableHeader" class="row">
+		<div class="sort span1" data-sort="id">
+			<span>#</span>
+			<i class="icon-white icon-resize-vertical"></i>
+		</div>
+		<div class="sort span3" data-sort="name">
+			<span>Name</span>
+			<i class="icon-white icon-resize-vertical"></i>
+		</div>
+		<div class="sort span2" data-sort="category">
+			<span>Category</span>
+			<i class="icon-white icon-resize-vertical"></i>
+		</div>
+		<div class="sort span2" data-sort="dateCreated">
+			<span>Date created</span>
+			<i class="icon-white icon-resize-vertical"></i>
+		</div>
+		<div class="sort span1" data-sort="paid">
+			<span>Paid</span>
+			<i class="icon-white icon-resize-vertical"></i>
+		</div>
+		<div class="sort span1" data-sort="cost">
+			<span>Cost</span>
+			<i class="icon-white icon-resize-vertical"></i>
+		</div>
+	</div>
+</div>
