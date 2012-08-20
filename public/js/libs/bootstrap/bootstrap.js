@@ -1,3 +1,6 @@
+define([
+  'jquery',
+], function($){
 /* ===================================================
  * bootstrap-transition.js v2.0.4
  * http://twitter.github.com/bootstrap/javascript.html#transitions
@@ -16,10 +19,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-
-define([
-  'jquery',
-], function($){
 
 !function ($) {
 

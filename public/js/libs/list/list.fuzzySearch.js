@@ -1,3 +1,7 @@
+define([
+    'list'
+], function() {
+    
 /**
 * Locate the best instance of 'pattern' in 'text' using the Bitap algorithm.
 *
@@ -11,9 +15,6 @@
 * http://www.apache.org/licenses/LICENSE-2.0
 *
 */
-define([
-    'list'
-], function() {
 
 List.prototype.plugins.fuzzySearch = function(locals, options) {
     var self = this;

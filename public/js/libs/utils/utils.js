@@ -5,11 +5,6 @@ define([
 ], function($, _, Backbone){
 
 	var utils = {};
-	//window.hostUrl = 'http://eigdevkiev.ciklum.net';
-	window.hostUrl = 'http://www.energyintel.com';
-
-	utils.serviceUrl = hostUrl + ':888/WpsService.svc/';
-
 	
 	//frequently used elems added to cache $elems
 	utils.ui = {
@@ -24,27 +19,13 @@ define([
 		showLoading: function(){
 			this.$elems.spinner.show();
 		},
-		getRootElementByTagName: function(event, tagName){
-			var $rootElement;
-			function GetRootElement(el){
-				$rootElement = el;
-			};
-
-			var $srcElem = event.srcElement? $(event.srcElement) : $(event.target); 
-
-			//detect root element
-			$srcElem.prop('tagName') == tagName && GetRootElement($srcElem) ||
-			$srcElem.closest(tagName)[0] && GetRootElement($srcElem.closest(tagName).first());
-
-			return $rootElement;
-		},
 		getRootElementByClassName: function(event, className){
 			var $rootElement;
 			function GetRootElement(el){
 				$rootElement = el;
 			};
 
-			var $srcElem = event.srcElement? $(event.srcElement) : $(event.target); 
+			var $srcElem = event.srcElement? $(event.srcElement) : $(event.target);
 			
 			//detect root element
 			$srcElem.hasClass(className) && GetRootElement($srcElem) ||
@@ -55,18 +36,88 @@ define([
 	};
 
 	utils.messages = {
-		serviceAccessError: 'You don\'t have access to this service.',
-		articleAccessError: 'You don\'t have access to this article.'
+
 	};
 
 	utils.consts = {
-		numberOfLatestArticles: 10,
-		batchOfLatestArticles: 5
+
 	};
 
 	utils.data = {
-		
+		parseExpense: function(response, xhr, context){
+			var isBakboneModel = response instanceof Backbone.Model,
+				expense = response;
+
+			var selectedCategory = _(utils.categoriesList).find(function(item, index){ 
+				return item.id == GetProperyValue('categoryId');
+			});
+
+			if (selectedCategory)
+				SetProperyValue('categoryName', selectedCategory.Title);
+
+			SetProperyValue('dateCreatedFormat', new Date(Date.parse(GetProperyValue('dateCreated'))).format('l, F j, Y'));
+
+			function SetProperyValue(propertyName, value){
+				if (isBakboneModel){
+					expense.set(propertyName, value)
+				}
+				else expense[propertyName] = value;
+			};
+
+			function GetProperyValue(propertyName){
+				return isBakboneModel ? expense.get(propertyName) : expense[propertyName];
+			};
+
+			return expense;
+		},
+
+		parseModelPropery: function(model, event){
+			var target = event.srcElement || event.target,
+
+				propertyName = target.name,
+				propertyValue = target.value,
+
+				modelValue = model.get(propertyName),
+
+				result = {};
+
+			switch(typeof modelValue){
+				case 'undefined':
+					break;
+				case 'object':
+					break;
+				case 'boolean':
+					propertyValue = target.hasOwnProperty('checked') ? target.checked : JSON.parse(propertyValue);
+					break;
+				case 'number':
+					propertyValue = parseFloat(propertyValue);
+					break;
+				case 'string':
+					if (!isNaN(Date.parse(modelValue))){
+						propertyValue = Date.parse(propertyValue);
+					}
+					break;
+				case 'function':
+					break;
+			}
+
+			result[propertyName] = propertyValue;
+
+			return result;
+		}
 	};
+
+	utils.categoriesList = [
+			{id: 1, Title: 'Food'},
+			{id: 2, Title: 'Girls'},
+			{id: 3, Title: 'Moto'},
+			{id: 4, Title: 'Transport'},
+			{id: 5, Title: 'Cafe'},
+			{id: 6, Title: 'Gifts'},
+			{id: 7, Title: 'Clothing'},
+			{id: 8, Title: 'Internet'},
+			{id: 9, Title: 'Sport'}
+			];
 
 /*----------------------------------COMMON------------------------------------*/
 	//Date formatting

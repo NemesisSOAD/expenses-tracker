@@ -36,12 +36,12 @@ define([
 				activeFilter: activePaidFilter
 			}));
 
-			$expensesTable = this.$('#expenses');
-			$expenses = $expensesTable.find('.list');
-			$totalCost = this.$('#totalCost');
+			this.$expensesTable = this.$('#expenses');
+			this.$expenses = this.$expensesTable.find('.list');
+			this.$totalCost = this.$('#totalCost');
 
 			//draw header with filters
-			$expensesTable.prepend(this.listHeaderView.render().el);
+			this.$expensesTable.prepend(this.listHeaderView.render().el);
 		},
 
 		render: function () {
@@ -49,7 +49,7 @@ define([
 
 			!this.$el.html() && this.initializeTemplate();
 
-			!this.expenses.models.length && this.expenses.fetch({
+			this.expenses.fetch({
 				success: function(model, response){
 					
 					setTimeout(function(){
@@ -71,13 +71,13 @@ define([
 
 			if (!this.sortedList){
 				var pagingOptions = {
-					name: "paging",
+					name: 'paging',
 					innerWindow: 2,
 					outerWindow: 2
 				};
 
 				var fuzzyOptions = {
-					searchClass: "fuzzy-search",
+					searchClass: 'fuzzy-search',
 					location: 0,
 					distance: 100,
 					threshold: 0.4,
@@ -86,7 +86,7 @@ define([
 
 				var options = {
 					item: expenseTemplate,
-					page: 10,
+					page:10,
 					asc: true,
 					plugins: [
 						['paging', pagingOptions],
@@ -94,7 +94,7 @@ define([
 					]
 				};
 
-				this.sortedList = new List($expensesTable[0], options, listValues);
+				this.sortedList = new List(this.$expensesTable[0], options, listValues);
 			}
 			else{
 				this.sortedList.clear();
@@ -118,14 +118,14 @@ define([
 
 			switch(args.filterId){
 				case 0:
-					this.sortedList.filter(function(item){ return !JSON.parse(item.values().paid)});
+					this.sortedList.filter(function(item){ return !item.values().paid});
 					break;
 				case 1:
 				default:
 					this.sortedList.filter();
 					break;
 				case 2:
-					this.sortedList.filter(function(item){ return JSON.parse(item.values().paid)});
+					this.sortedList.filter(function(item){ return item.values().paid});
 					break;
 			}
 
@@ -137,7 +137,7 @@ define([
 
 		calculateTotalCost: function(){
 			var totalCost =  _(this.sortedList.matchingItems).reduce(reduceFunc, 0);
-			$totalCost.text('$' + totalCost);
+			this.$totalCost.text('$' + totalCost);
 
 			function reduceFunc(sum, item){ 
 				return sum + item.values().cost 

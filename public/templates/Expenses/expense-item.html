@@ -1,11 +1,14 @@
-<a href="#expenses/<%= id %>" class="row thumbnail">
-	<div class="span1 id"><%= id %></div>
-	<div class="span3"><h4 class="name"><%= name %></h4></div>
-	<div class="span2"><h4 class="category"><%= category %></h4></div>
-	<div class="span2"><h5 class="dateCreated"><%= dateCreated %></h5></div>
-	<div class="span1">
+<a href="#expenses/<%= id %>" class="row thumbnail block">
+	<div class="centered span1 id"><%= id %></div>
+	<div class="centered span3"><h4 class="name"><%= name %></h4></div>
+	<div class="centered span2"><h4 class="categoryName"><%= categoryName %></h4></div>
+	<div class="centered span2">
+		<span class="dateCreated hide"><%= paid %></span>
+		<h5><%= dateCreatedFormat %></h5>
+	</div>
+	<div class="centered span1">
 		<input type="checkbox" <% if (paid){%>checked<%}%>/>
 		<span class="paid hide"><%= paid %></span>
 	</div>
-	<div class="span1"><h3 class="pull-left">$</h3><h3 class="cost"><%= cost %></h3></div>
+	<div class="centered span1"><h3 class="pull-left">$</h3><h3 class="cost"><%= cost %></h3></div>
 </a>

@@ -29,8 +29,7 @@ define([
 				activeFilter: activePaidFilter
 			}));
 
-			$tableHeader = this.$('#tableHeader');
-			$paidFilter = this.$('#paidFilter');
+			this.$tableHeader = this.$('#tableHeader');
 		},
 
 		render: function () {
@@ -51,7 +50,7 @@ define([
 
 		paidFilterChanged: function(event){
 			var target = event.srcElement || event.target;
-			this.trigger('paidFilterChanged', {target: target, filterId: $(target).data('filterid')});
+			this.trigger('paidFilterChanged', {target: target, filterId: $(target).data('filter-id')});
 		},
 
 		sortTable: function(event){
@@ -60,7 +59,7 @@ define([
 
 			var sortDirection = $rootElement.hasClass('asc');
 
-			$tableHeader.find('i').removeClass();
+			this.$tableHeader.find('i').removeClass();
 			$rootElement.find('i').attr('class', 'icon-white ' + (sortDirection ? 'icon-chevron-down' : 'icon-chevron-up'));
 		},
 

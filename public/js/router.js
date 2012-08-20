@@ -40,19 +40,18 @@ define([
 		},
 
 		expenseDetails: function(id){
-			var self = this;
 			var expense = this.expensesPage.expenses.get(id);
-	        
-	        new ExpenseDetailsView({model: expense}).render().$el.modal('show').on('hide', function(){
-	        	//self.goToDashboard();
-	        });
+			this.createExpenseDetailsView(expense);
+			
+			//add hidden dialog content
+			this.slidePage(this.expenseDetailsPage);
 		},
 
 		addExpense: function(){
-			var self = this;
-			new ExpenseDetailsView({model: new Expense()}).render().$el.modal('show').on('hide', function(){
-	        	//self.goToDashboard();
-	        });
+			this.createExpenseDetailsView(new Expense());
+			
+			//add hidden dialog content
+			this.slidePage(this.expenseDetailsPage);
 		},
 
 		goToAbout: function(){
@@ -61,9 +60,11 @@ define([
 		},
 
 		//sliding pages
-		slidePage: function(page) {
-			if (this.currentPage && !this.currentPage.isCacheable){
-				$('#' + this.currentPage.attributes.id).remove();
+		slidePage: function(page, modalClosedCallback) {
+			if (this.currentPage){
+				Backbone.Validation.unbind(this.currentPage);
+				if(!this.currentPage.isCacheable)
+					$('#' + this.currentPage.attributes.id).remove();
 			}
 
 			this.currentPage = page;
@@ -71,7 +72,8 @@ define([
 			var renderedPage = $('#' + page.attributes.id);
 			
 			//hide other pages
-			utils.ui.$elems.content.children().hide();
+			if (!page.isModalDialog)
+				utils.ui.$elems.content.children().hide();
 
 			if (renderedPage[0]){
 				//make needed DOM manipulations
@@ -83,8 +85,26 @@ define([
 			}
 
 			//show rendered page
-			renderedPage.show();
+			if (page.isModalDialog){
+				//show dialog
+				page.$el.modal({
+					backdrop : "static",
+					keyboard : true,
+					show : true 
+				}).on('hide', modalClosedCallback ? modalClosedCallback : this.backToPrevPage);
+			}
+			else renderedPage.show();
 		},
+
+		backToPrevPage: function(){
+			window.history.back();
+		},
+
+		createExpenseDetailsView: function(model){
+			this.expenseDetailsPage = this.expenseDetailsPage || new ExpenseDetailsView();
+			this.expenseDetailsPage.model = model;
+			this.expenseDetailsPage.options = {expensesPage: this.expensesPage};
+		}
 
 	});
 

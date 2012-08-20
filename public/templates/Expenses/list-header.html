@@ -6,7 +6,7 @@
 	<div class="span3">
 		<div id="paidFilter" class="btn-group" data-toggle="buttons-radio">
 			<% for(var i = 0; i < paidFilters.length; i++){ %>
-				<button class="btn <% if (activeFilter == i){%>active<%}%>" data-filterId="<%= i %>"><%= paidFilters[i] %></button>
+				<button class="btn <% if (activeFilter == i){%>active<%}%>" data-filter-id="<%= i %>"><%= paidFilters[i] %></button>
 			<% } %>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 			<span>Name</span>
 			<i class="icon-white icon-resize-vertical"></i>
 		</div>
-		<div class="sort span2" data-sort="category">
+		<div class="sort span2" data-sort="categoryName">
 			<span>Category</span>
 			<i class="icon-white icon-resize-vertical"></i>
 		</div>

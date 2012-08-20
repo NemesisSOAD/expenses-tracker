@@ -20,7 +20,7 @@ body {
 	padding: 8px;
 	line-height: 18px;
 	text-align: left;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 .list{
@@ -36,3 +36,60 @@ body {
 	color: white;
 	text-align: center;
 }
+
+/*-----------------------------*/
+.close{
+	color: white;
+	font-size: 30px;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	color: black;
+}
+
+.modal-body {
+	max-height: none;
+}
+
+/*---------VERTICAL CENTERING----------------*/
+/* This parent can be any width and height */
+
+/*.block {
+  text-align: center;
+}*/
+ 
+/* The ghost, nudged to maintain perfect centering */
+/*.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0px;
+}
+*/
+/* The element to be centered, can
+   also be of any width and height */ 
+/*.centered {
+  display: inline-block;
+  vertical-align: middle;
+}*/
+
+/*.table .list .row > div{
+	float: none;
+}*/

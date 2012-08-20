@@ -5,6 +5,7 @@ define([
 	'utils',
 	'router',
 	'backboneValidation',
+	'backboneValidationBootstrap',
 	'bootstrap',
 	'list',
 	'listPaging',

@@ -8,8 +8,8 @@ define([
 	
 	var Expenses = Backbone.Collection.extend({
 		model: Expense,
-		url: 'api/expenses',
-	});
+		url: 'api/expenses'
+	})
 
 	return Expenses;
 });

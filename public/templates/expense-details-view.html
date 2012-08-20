@@ -1,98 +1,87 @@
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal">×</button>
+	<button class="close">&times;</button>
 	<h3>Expense Details</h3>
 </div>
-<div class="modal-body">
-	<div class="row">
-		<form class="form-horizontal span6">
-			<fieldset>
-				<div class="row">
-					<div class="span6">
+<div class="modal-body">	
+	<form class="form-horizontal">
+		<fieldset>
+			<div class="control-group">
+				<label for="expenseId" class="control-label">Id:</label>
 
-						<div class="control-group">
-							<label for="expenseId" class="control-label">Id:</label>
-
-							<div class="controls">
-								<input id="expenseId" name="id" type="text" value="<%= id === null ? '' : id %>" class="span1"
-									   disabled/>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label for="name" class="control-label">Name:</label>
-
-							<div class="controls">
-								<input type="text" id="name" name="name" value="<%= name %>"/>
-								<span class="help-inline"></span>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label for="cost" class="control-label">Cost:</label>
-
-							<div class="controls">
-								<input type="text" id="cost" name="cost" value="<%= cost %>"/>
-								<span class="help-inline"></span>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label for="country" class="control-label">Paid:</label>
-
-							<div class="controls">
-								<input type="checkbox" id="paid" name="paid" value="<%= paid %>"/>
-								<span class="help-inline"></span>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label for="dateCreated" class="control-label">Date created:</label>
-
-							<div class="controls">
-								<input type="text" id="dateCreated" name="dateCreated" value="<%= dateCreated %>"/>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label for="category" class="control-label">Category:</label>
-
-							<div class="controls">
-								<select class="span1" id="category" name="category" value="<%= category %>">
-									<option>2012</option>
-									<option>2011</option>
-									<option>2010</option>
-									<option>2009</option>
-									<option>2008</option>
-									<option>2007</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="control-group">
-							<label for="description" class="control-label">Description:</label>
-
-							<div class="controls">
-								<textarea id="description" name="description" class="span4" rows="4"><%= description
-									%></textarea>
-							</div>
-						</div>
-
-					</div>
-
+				<div class="controls">
+					<input id="expenseId" name="id" type="text" value="<%= id === null ? '' : id %>" class="span1"
+						   disabled/>
 				</div>
-			</fieldset>
-		</form>
-	</div>
+			</div>
 
-<div class="row status-bar">
-	<div class="span12">
-		<div class="alert alert-success" style="display: none">
-			<b>Success!</b> Expense saved successfully
+			<div class="control-group">
+				<label for="name" class="control-label">Name:</label>
+
+				<div class="controls">
+					<input type="text" id="name" name="name" value="<%= name %>" data-error-style="inline"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="cost" class="control-label">Cost:</label>
+
+				<div class="controls">
+					<input type="text" id="cost" name="cost" value="<%= cost %>" data-error-style="inline"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="country" class="control-label">Paid:</label>
+
+				<div class="controls">
+					<input type="checkbox" id="paid" name="paid" <% if (paid){%>checked<%}%>/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="dateCreated" class="control-label">Date created:</label>
+
+				<div class="controls">
+					<input type="text" id="dateCreated" name="dateCreated" value="<%= dateCreated %>" data-error-style="inline"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="categoryId" class="control-label">Category:</label>
+
+				<div class="controls">
+					<select id="categoryId" name="categoryId" data-error-style="inline">
+						<option disabled="disabled">---- Select category ----</option>
+						<% for (var i = 0; i < categories.length; i++){ %>
+							<option value="<%= categories[i].id %>" 
+								<%if (categoryId == categories[i].id){%>selected="selected"<% } %>>
+								<%= categories[i].Title %>
+							</option>
+						<% } %>
+					</select>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="description" class="control-label">Description:</label>
+
+				<div class="controls">
+					<textarea id="description" name="description" class="span4" rows="4" data-error-style="inline"><%= description	%></textarea>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+	<div class="status-bar">
+		<div class="alert alert-error" style="display:none">
+			<strong>Ooops!</strong> You did not pass the validation.
 		</div>
-	</div>
-</div>  
+		<div class="alert alert-success" style="display:none">
+			<strong>Success!</strong> You passed the validation.
+		</div>
+	</div>  
 </div>
-<div class="modal-footer">
-	<a href="#" class="btn save btn-primary" data-dismiss="modal">Save</a>
-	<a href="#" class="btn delete ">Delete</a>
+<div class="modal-footer form-actions">
+	<a class="btn save btn-primary">Save</a>
+	<a class="btn delete ">Delete</a>
 </div>
