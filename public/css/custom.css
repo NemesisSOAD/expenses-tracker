@@ -67,6 +67,10 @@ input[type="color"],
 	max-height: none;
 }
 
+.modal{
+	width: 500px;
+}
+
 /*---------VERTICAL CENTERING----------------*/
 /* This parent can be any width and height */
 

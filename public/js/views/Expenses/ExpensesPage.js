@@ -31,10 +31,7 @@ define([
 		},
 
 		initializeTemplate: function(){
-			$(this.el).html(this.template({
-				paidFilters: paidFilters, 
-				activeFilter: activePaidFilter
-			}));
+			$(this.el).html(this.template({}));
 
 			this.$expensesTable = this.$('#expenses');
 			this.$expenses = this.$expensesTable.find('.list');
@@ -95,6 +92,9 @@ define([
 				};
 
 				this.sortedList = new List(this.$expensesTable[0], options, listValues);
+
+				this.runPaidfilter({filterId: this.listHeaderView.activePaidFilter});
+				this.runFuzzySearch({searchWord: this.listHeaderView.defaultSearchWord});
 			}
 			else{
 				this.sortedList.clear();
@@ -103,7 +103,7 @@ define([
 			}
 
 			this.calculateTotalCost();
-			this.sortedList.on('updated', function() { self.calculateTotalCost()});
+			this.sortedList.on('updated', function() { self.calculateTotalCost(); });
 		},
 
 		events: {

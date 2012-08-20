@@ -26,7 +26,7 @@ require(['jquery',
 ], function(jQuery, App, utils){
 
 	jQuery(function ($) {
-    	
-    	App.initialize();
-  	});
+		
+		App.initialize();
+	});
 });

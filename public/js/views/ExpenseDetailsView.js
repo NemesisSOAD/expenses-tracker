@@ -22,8 +22,6 @@ define([
 
 		initialize: function () {
 			this.template = _.template(viewTemplate);
-
-			this.defaultSelectedCategoryId = 1;
 		},
 
 		initializeTemplate: function(){
@@ -132,12 +130,14 @@ define([
 			var self = this,
 				expenseId = this.model.get('id');
 
-			this.model.destroy({success: function(model, response) {
-				self.expensesList.remove('id', expenseId);
-				self.expensesList.update();
+			this.model.destroy({
+				success: function(model, response) {
+					self.expensesList.remove('id', expenseId);
+					self.expensesList.update();
 
-				self.hideDialog();
-			}});
+					self.hideDialog();
+				}
+			});
 
 			return false;
 		},

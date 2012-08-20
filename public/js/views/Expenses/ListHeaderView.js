@@ -17,16 +17,18 @@ define([
 		initialize: function () {
 			this.template = _.template(viewTemplate);
 
-			paidFilters = ['Unpaid', 'Pain/Unpaid', 'Paid'];
-			activePaidFilter = 1;
+			this.paidFilters = ['Unpaid', 'Pain/Unpaid', 'Paid'];
+			this.activePaidFilter = 1;
+			this.defaultSearchWord = '';
 
 			this.render();
 		},
 
 		initializeTemplate: function(){
 			$(this.el).html(this.template({
-				paidFilters: paidFilters, 
-				activeFilter: activePaidFilter
+				paidFilters: this.paidFilters, 
+				activeFilter: this.activePaidFilter,
+				defaultSearchWord: this.defaultSearchWord
 			}));
 
 			this.$tableHeader = this.$('#tableHeader');
