@@ -59,7 +59,7 @@ define([
 				SetProperyValue('categoryName', selectedCategory.Title);
 
 			SetProperyValue('dateCreated', new Date(Date.parse(GetProperyValue('dateCreated'))));
-			SetProperyValue('dateCreatedFormat', new Date(Date.parse(GetProperyValue('dateCreated'))).format('l, F j, Y'));
+			SetProperyValue('dateCreatedFormat', new Date(Date.parse(GetProperyValue('dateCreated'))).format('j M Y, H:i'));
 
 			function SetProperyValue(propertyName, value){
 				if (isBakboneModel){
