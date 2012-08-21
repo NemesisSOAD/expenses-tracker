@@ -130,12 +130,10 @@ define([
 					this.sortedList.filter(function(item){ return item.values().paid});
 					break;
 			}
-			this.activePaidFilter = args.filterId;
 		},
 
 		runFuzzySearch: function(args){
 			this.sortedList.fuzzySearch(args.searchWord);
-			this.searchWord = args.searchWord;
 		},
 
 		calculateTotalCost: function(){

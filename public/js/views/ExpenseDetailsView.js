@@ -64,6 +64,11 @@ define([
 			});
 		},
 
+		hideDialog: function(){
+			this.$el.modal('hide');
+			app.backToPrevPage();
+		},
+
 		events: {
 			'change':				'updateModel',
 			'click .save':			'saveExpense',
@@ -117,7 +122,8 @@ define([
 				item.values(model.toJSON());
 
 			this.expensesList.update();
-			this.$el.modal('hide');
+
+			this.hideDialog();
 		},
 
 		succesCreate: function(model){
@@ -128,11 +134,6 @@ define([
 			}
 
 			this.hideDialog();
-		},
-
-		hideDialog: function(){
-			this.$el.modal('hide');
-			app.backToPrevPage();
 		},
 
 		deleteExpense: function(event){
