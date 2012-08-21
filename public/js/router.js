@@ -86,12 +86,7 @@ define([
 
 			//show rendered page
 			if (page.isModalDialog){
-				//show dialog
-				page.$el.modal({
-					backdrop : "static",
-					keyboard : true,
-					show : true 
-				}).on('hide', modalClosedCallback ? modalClosedCallback : this.backToPrevPage);
+				page.showDialog();
 			}
 			else renderedPage.show();
 		},

@@ -40,7 +40,8 @@ define([
 	};
 
 	utils.consts = {
-
+		numberOfListRows:	10,
+		searchThreshold:	0.4
 	};
 
 	utils.data = {
@@ -55,6 +56,7 @@ define([
 			if (selectedCategory)
 				SetProperyValue('categoryName', selectedCategory.Title);
 
+			SetProperyValue('dateCreated', new Date(Date.parse(GetProperyValue('dateCreated'))));
 			SetProperyValue('dateCreatedFormat', new Date(Date.parse(GetProperyValue('dateCreated'))).format('l, F j, Y'));
 
 			function SetProperyValue(propertyName, value){
@@ -85,6 +87,9 @@ define([
 				case 'undefined':
 					break;
 				case 'object':
+					if (modelValue instanceof Date){
+						propertyValue = new Date(Date.parse(propertyValue));
+					}
 					break;
 				case 'boolean':
 					propertyValue = target.hasOwnProperty('checked') ? target.checked : JSON.parse(propertyValue);
@@ -96,8 +101,6 @@ define([
 					if (!isNaN(Date.parse(modelValue))){
 						propertyValue = Date.parse(propertyValue);
 					}
-					break;
-				case 'function':
 					break;
 			}
 

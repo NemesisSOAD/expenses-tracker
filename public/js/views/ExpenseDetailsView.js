@@ -56,6 +56,14 @@ define([
 			return this;
 		},
 
+		showDialog: function(){
+			this.$el.modal({
+				backdrop : "static",
+				keyboard : false,
+				show : true 
+			});
+		},
+
 		events: {
 			'change':				'updateModel',
 			'click .save':			'saveExpense',
@@ -124,6 +132,7 @@ define([
 
 		hideDialog: function(){
 			this.$el.modal('hide');
+			app.backToPrevPage();
 		},
 
 		deleteExpense: function(event){
