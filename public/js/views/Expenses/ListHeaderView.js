@@ -19,7 +19,7 @@ define([
 
 			this.paidFilters = ['Unpaid', 'Pain/Unpaid', 'Paid'];
 			this.activePaidFilter = 1;
-			this.defaultSearchWord = '';
+			this.activeSearchWord = '';
 
 			this.render();
 		},
@@ -28,7 +28,7 @@ define([
 			$(this.el).html(this.template({
 				paidFilters: this.paidFilters, 
 				activeFilter: this.activePaidFilter,
-				defaultSearchWord: this.defaultSearchWord
+				activeSearchWord: this.activeSearchWord
 			}));
 
 			this.$tableHeader = this.$('#tableHeader');
@@ -52,7 +52,8 @@ define([
 
 		paidFilterChanged: function(event){
 			var target = event.srcElement || event.target;
-			this.trigger('paidFilterChanged', {target: target, filterId: $(target).data('filter-id')});
+			this.activePaidFilter = $(target).data('filter-id');
+			this.trigger('paidFilterChanged', {target: target, filterId: this.activePaidFilter});
 		},
 
 		sortTable: function(event){
@@ -67,7 +68,8 @@ define([
 
 		searchInitiated: function(event){
 			var target = event.srcElement ? event.srcElement : event.target;
-			this.trigger('searchInitiated', {target: target, searchWord: $(target).val()});
+			this.activeSearchWord = $(target).val();
+			this.trigger('searchInitiated', {target: target, searchWord: this.activeSearchWord});
 		}
 		
 	});

@@ -77,13 +77,13 @@ define([
 					searchClass: 'fuzzy-search',
 					location: 0,
 					distance: 100,
-					threshold: 0.4,
+					threshold: utils.consts.searchThreshold,
 					multiSearch: true
 				};
 
 				var options = {
 					item: expenseTemplate,
-					page:10,
+					page: utils.consts.numberOfListRows,
 					asc: true,
 					plugins: [
 						['paging', pagingOptions],
@@ -92,18 +92,20 @@ define([
 				};
 
 				this.sortedList = new List(this.$expensesTable[0], options, listValues);
-
-				this.runPaidfilter({filterId: this.listHeaderView.activePaidFilter});
-				this.runFuzzySearch({searchWord: this.listHeaderView.defaultSearchWord});
+				this.sortedList.on('updated', function() { self.calculateTotalCost(); });
 			}
 			else{
 				this.sortedList.clear();
 				this.sortedList.add(listValues);
 				this.sortedList.update();
 			}
+			
+			this.applySortedListFilters();
+		},
 
-			this.calculateTotalCost();
-			this.sortedList.on('updated', function() { self.calculateTotalCost(); });
+		applySortedListFilters: function(){
+			this.runPaidfilter({filterId: this.listHeaderView.activePaidFilter});
+			this.runFuzzySearch({searchWord: this.listHeaderView.activeSearchWord});
 		},
 
 		events: {
@@ -128,11 +130,12 @@ define([
 					this.sortedList.filter(function(item){ return item.values().paid});
 					break;
 			}
-
+			this.activePaidFilter = args.filterId;
 		},
 
 		runFuzzySearch: function(args){
 			this.sortedList.fuzzySearch(args.searchWord);
+			this.searchWord = args.searchWord;
 		},
 
 		calculateTotalCost: function(){
