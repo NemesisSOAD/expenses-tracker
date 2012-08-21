@@ -21,7 +21,7 @@ require(['jquery',
 	'app', 'utils'
 
 	//comment when use real db
-	, 'libs/utils/memoryStore'
+	//, 'libs/utils/memoryStore'
 
 ], function(jQuery, App, utils){
 

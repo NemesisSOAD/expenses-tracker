@@ -8,7 +8,10 @@ define([
 	
 	var Expenses = Backbone.Collection.extend({
 		model: Expense,
-		url: 'api/expenses'
+		url: 'api/expenses',
+		parse: function(response, xhr) {
+			return utils.data.parseExpenses(response, xhr);
+		}
 	})
 
 	return Expenses;

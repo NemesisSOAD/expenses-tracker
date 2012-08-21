@@ -6,7 +6,10 @@ define([
 ], function($, _, Backbone, utils) {
 	
 	var Expense = Backbone.Model.extend({
-		url: 'api/expenses',
+
+		idAttribute: '_id',
+
+		urlRoot : 'api/expenses',
 
 		defaults: {
 			id: 				null,

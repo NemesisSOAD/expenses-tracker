@@ -45,9 +45,11 @@ define([
 	};
 
 	utils.data = {
-		parseExpense: function(response, xhr, context){
+		parseExpense: function(response, xhr){
 			var isBakboneModel = response instanceof Backbone.Model,
 				expense = response;
+
+			SetProperyValue('id', GetProperyValue('_id'));
 
 			var selectedCategory = _(utils.categoriesList).find(function(item, index){ 
 				return item.id == GetProperyValue('categoryId');
@@ -71,6 +73,16 @@ define([
 			};
 
 			return expense;
+		},
+
+		parseExpenses: function(response, xhr){
+
+			//add numbers to models
+			for (var i = 1; i < response.length + 1; i++) {
+				response[i-1]['number'] = i;
+			};
+
+			return response;
 		},
 
 		parseModelPropery: function(model, event){
