@@ -64,6 +64,11 @@ define([
 
 			this.$tableHeader.find('i').removeClass();
 			$rootElement.find('i').attr('class', 'icon-white ' + (sortDirection ? 'icon-chevron-down' : 'icon-chevron-up'));
+			
+			this.sortedColumn = { 
+				name: $rootElement.data('sort'),
+				asc: sortDirection
+			};
 		},
 
 		searchInitiated: function(event){

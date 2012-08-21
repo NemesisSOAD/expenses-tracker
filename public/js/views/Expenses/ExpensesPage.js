@@ -97,15 +97,18 @@ define([
 			else{
 				this.sortedList.clear();
 				this.sortedList.add(listValues);
-				this.sortedList.update();
+				//this.sortedList.update();
 			}
 			
-			this.applySortedListFilters();
+			this.applySortedListOptions();
 		},
 
-		applySortedListFilters: function(){
+		applySortedListOptions: function(){
 			this.runPaidfilter({filterId: this.listHeaderView.activePaidFilter});
 			this.runFuzzySearch({searchWord: this.listHeaderView.activeSearchWord});
+			
+			var sortedColumn = this.listHeaderView.sortedColumn;
+			sortedColumn && this.sortedList.sort(sortedColumn.name, { asc: sortedColumn.asc });
 		},
 
 		events: {

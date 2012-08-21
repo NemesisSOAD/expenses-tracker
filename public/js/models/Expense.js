@@ -13,7 +13,7 @@ define([
 			name: 				'',
 			dateCreated: 		new Date(),
 			dateCreatedFormat:	'',
-			categoryId:			5,
+			categoryId:			utils.categoriesList[0].id,
 			categoryName:		'',
 			description: 		'',
 			paid:				false,

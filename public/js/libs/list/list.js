@@ -249,7 +249,7 @@ self.update();
             value = null,
             //target = valueName.target || valueName.srcElement, /* IE have srcElement */
             //fix - if clicked on element that is not sort element
-            target = utils.ui.getRootElementByClassName(valueName, 'sort')[0],
+            target = valueName instanceof Event ? utils.ui.getRootElementByClassName(valueName, 'sort')[0] : undefined,
             sorting = '',
             isAsc = false,
             asc = 'asc',
