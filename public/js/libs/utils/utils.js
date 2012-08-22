@@ -75,16 +75,6 @@ define([
 			return expense;
 		},
 
-		parseExpenses: function(response, xhr){
-
-			//add numbers to models
-			for (var i = 1; i < response.length + 1; i++) {
-				response[i-1]['number'] = i;
-			};
-
-			return response;
-		},
-
 		parseModelPropery: function(model, event){
 			var target = event.srcElement || event.target,
 

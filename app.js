@@ -1,6 +1,7 @@
 var connectionString = 'jDmc:admin@ds037007.mongolab.com:37007/expenses';
 
 var express = require('express'),
+	_ = require('underscore'),
 	db = require('mongojs').connect(connectionString),
 	expenses = db.collection('expenses');
 
@@ -17,6 +18,18 @@ app.configure(function () {
 	app.use(express.static(__dirname + '/public'));
 });
 
+function GetExpenseFromRequest(req){
+	var body = req.body;
+	return {
+		'name':			body.name,
+		'dateCreated':	new Date(Date.parse(body.dateCreated)),
+		'categoryId':	body.categoryId,
+		'cost':			body.cost,
+		'paid':			body.paid,
+		'description':	body.description
+	};
+};
+
 app.get('/', function(req, res){
 	res.render('index.html');
 });
@@ -24,6 +37,7 @@ app.get('/', function(req, res){
 //----------GET ALL
 app.get('/api/expenses', function(req, res){
 	var result = [];
+	var i = 0;
 	expenses.find().forEach(function(err, doc) {
 		if(err){
 			res.send('Error: ' + err);
@@ -32,6 +46,7 @@ app.get('/api/expenses', function(req, res){
 			res.send(result);
 			return;
 		}
+		doc['number'] = ++i;
 		result.push(doc);
 	});
 });
@@ -48,7 +63,8 @@ app.get('/api/expenses/:id', function(req, res){
 
 //----------CREATE 
 app.post('/api/expenses', function(req, res){
-	expenses.save(req.body, function(err, doc){
+	var model = GetExpenseFromRequest(req);
+	expenses.save(model, function(err, doc){
 		if(err) res.send('Error: ' + err);
 		if(doc){
 			res.send(doc);
@@ -58,22 +74,12 @@ app.post('/api/expenses', function(req, res){
 
 //----------UPDATE
 app.put('/api/expenses/:id', function(req, res){
-	var model = req.body;
-	expenses.save(
-		{
-			'_id':			db.ObjectId(req.params.id),
-			'name':			model.name,
-			'dateCreated':	new Date(Date.parse(model.dateCreated)),
-			'categoryId':	model.categoryId,
-			'cost':			model.cost,
-			'paid':			model.paid,
-			'description':	model.description
-		},
+	var model = GetExpenseFromRequest(req);
+	expenses.save(_(model).extend({'_id': db.ObjectId(req.params.id)}),
 		function(err, doc) {
 			if(err){
 				res.send(err);
 			}
-			//TODO: Remove findOne
 			expenses.findOne({'_id': db.ObjectId(req.params.id)}, function(err, doc){
 				res.send(doc);
 			});
