@@ -15,7 +15,7 @@ define([
 				populate: function () {
 
 					this.expenses[1] = {
-						id: 1,
+						_id: 1,
 						name: "CHATEAU DE SAINT COSME",
 						dateCreated: "2009",
 						categoryId: 1,
@@ -24,7 +24,7 @@ define([
 						paid: true
 					};
 					this.expenses[2] = {
-						id: 2,
+						_id: 2,
 						name: "LAN RIOJA CRIANZA",
 						dateCreated: "2006",
 						categoryId: 2,
@@ -33,7 +33,7 @@ define([
 						paid: true
 					};
 					this.expenses[3] = {
-						id: 3,
+						_id: 3,
 						name: "MARGERUM SYBARITE",
 						dateCreated: "2010",
 						categoryId: 3,
@@ -42,7 +42,7 @@ define([
 						paid: true
 					};
 					this.expenses[4] = {
-						id: 4,
+						_id: 4,
 						name: "OWEN ROE \"EX UMBRIS\"",
 						dateCreated: "2009",
 						categoryId: 4,
@@ -51,7 +51,7 @@ define([
 						paid: true
 					};
 					this.expenses[5] = {
-						id: 5,
+						_id: 5,
 						name: "REX HILL",
 						dateCreated: "2009",
 						categoryId: 3,
@@ -60,7 +60,7 @@ define([
 						paid: true
 					};
 					this.expenses[6] = {
-						id: 6,
+						_id: 6,
 						name: "VITICCIO CLASSICO RISERVA",
 						dateCreated: "2007",
 						categoryId: 6,
@@ -69,7 +69,7 @@ define([
 						paid: true
 					};
 					this.expenses[7] = {
-						id: 7,
+						_id: 7,
 						name: "CHATEAU LE DOYENNE",
 						dateCreated: "2005",
 						categoryId: 6,
@@ -78,7 +78,7 @@ define([
 						paid: false
 					};
 					this.expenses[8] = {
-						id: 8,
+						_id: 8,
 						name: "DOMAINE DU BOUSCAT",
 						dateCreated: "2009",
 						categoryId: 7,
@@ -87,7 +87,7 @@ define([
 						paid: true
 					};
 					this.expenses[9] = {
-						id: 9,
+						_id: 9,
 						name: "BLOCK NINE",
 						dateCreated: "2009",
 						categoryId: 9,
@@ -96,7 +96,7 @@ define([
 						paid: false
 					};
 					this.expenses[10] = {
-						id: 10,
+						_id: 10,
 						name: "DOMAINE SERENE",
 						dateCreated: "2007",
 						categoryId: 8,
@@ -105,7 +105,7 @@ define([
 						paid: true
 					};
 					this.expenses[11] = {
-						id: 11,
+						_id: 11,
 						name: "BODEGA LURTON",
 						dateCreated: "2011",
 						categoryId: 6,
@@ -114,7 +114,7 @@ define([
 						paid: false
 					};
 					this.expenses[12] = {
-						id: 12,
+						_id: 12,
 						name: "LES MORIZOTTES",
 						dateCreated: "2009",
 						categoryId: 5,
@@ -123,7 +123,7 @@ define([
 						paid: true
 					};
 					this.expenses[13] = {
-						id: 13,
+						_id: 13,
 						name: "ARGIANO NON CONFUNDITUR",
 						dateCreated: "2009",
 						categoryId: 4,
@@ -132,7 +132,7 @@ define([
 						paid: true
 					};
 					this.expenses[14] = {
-						id: 14,
+						_id: 14,
 						name: "DINASTIA VIVANCO ",
 						dateCreated: "2008",
 						categoryId: 3,
@@ -141,7 +141,7 @@ define([
 						paid: false
 					};
 					this.expenses[15] = {
-						id: 15,
+						_id: 15,
 						name: "PETALOS BIERZO",
 						dateCreated: "2009",
 						categoryId: 8,
@@ -150,7 +150,7 @@ define([
 						paid: true
 					};
 					this.expenses[16] = {
-						id: 16,
+						_id: 16,
 						name: "SHAFER RED SHOULDER RANCH",
 						dateCreated: "2009",
 						categoryId: 7,
@@ -159,7 +159,7 @@ define([
 						paid: true
 					};
 					this.expenses[17] = {
-						id: 17,
+						_id: 17,
 						name: "PONZI",
 						dateCreated: "2010",
 						categoryId: 3,
@@ -168,7 +168,7 @@ define([
 						paid: false
 					};
 					this.expenses[18] = {
-						id: 18,
+						_id: 18,
 						name: "HUGEL",
 						dateCreated: "2010",
 						categoryId: 1,
@@ -177,7 +177,7 @@ define([
 						paid: true
 					};
 					this.expenses[19] = {
-						id: 19,
+						_id: 19,						
 						name: "FOUR VINES MAVERICK",
 						dateCreated: "2011",
 						categoryId: 1,
@@ -186,7 +186,7 @@ define([
 						paid: true
 					};
 					this.expenses[20] = {
-						id: 20,
+						_id: 20,
 						name: "QUIVIRA DRY CREEK VALLEY",
 						dateCreated: "2009",
 						categoryId: 2,
@@ -195,7 +195,7 @@ define([
 						paid: true
 					};
 					this.expenses[21] = {
-						id: 21,
+						_id: 21,
 						name: "CALERA 35TH ANNIVERSARY",
 						dateCreated: "2010",
 						categoryId: 3,
@@ -204,7 +204,7 @@ define([
 						paid: false
 					};
 					this.expenses[22] = {
-						id: 22,
+						_id: 22,
 						name: "CHATEAU CARONNE STE GEMME",
 						dateCreated: "2010",
 						categoryId: 4,
@@ -213,7 +213,7 @@ define([
 						paid: true
 					};
 					this.expenses[23] = {
-						id: 23,
+						_id: 23,
 						name: "MOMO MARLBOROUGH",
 						dateCreated: "2010",
 						categoryId: 5,
@@ -222,7 +222,7 @@ define([
 						paid: false
 					};
 					this.expenses[24] = {
-						id: 24,
+						_id: 24,
 						name: "WATERBROOK",
 						dateCreated: "2009",
 						categoryId: 6,
@@ -239,18 +239,19 @@ define([
 				},
 
 				findAll: function () {
-					return _.values(this.expenses);
+					var respose = _(_(this.expenses).values()).map(function(item, index){ return _({number: parseInt(index + 1)}).extend(item)});
+					return respose;
 				},
 
 				create: function (model) {
 					this.lastId++;
-					model.set('id', this.lastId);
-					this.expenses[this.lastId] = model;
+					model.set('_id', this.lastId);
+					this.expenses[this.lastId] = model.toJSON();
 					return model;
 				},
 
 				update: function (model) {
-					this.expenses[model.id] = model;
+					this.expenses[model.id] = model.toJSON();
 					return model;
 				},
 
