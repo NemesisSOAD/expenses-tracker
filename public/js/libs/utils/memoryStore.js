@@ -8,7 +8,7 @@ define([
 
 		initialize : function(){
 			// The in-memory Store. Encapsulates logic to access wine data.
-			var store = {
+			window.store = {
 
 				expenses: {},
 
