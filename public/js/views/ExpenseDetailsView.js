@@ -117,11 +117,13 @@ define([
 		},
 
 		successSave: function(model){
-			var item = this.expensesList.get('id', model.get('id'));
-			if (item)
-				item.values(model.toJSON());
+			if (this.expensesList){
+				var item = this.expensesList.get('id', model.get('id'));
+				if (item)
+					item.values(model.toJSON());
 
-			this.expensesList.update();
+				this.expensesList.update();
+			}
 
 			this.hideDialog();
 		},
