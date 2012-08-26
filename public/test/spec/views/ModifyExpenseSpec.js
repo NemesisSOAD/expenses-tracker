@@ -15,7 +15,8 @@ describe('View :: ExpenseDetailsView', function() {
 			'views/ExpenseDetailsView',
 			'backboneValidation',
 			'bootstrap',
-			'backboneValidationBootstrap'
+			'backboneValidationBootstrap',
+			'memoryStorage'
 		], function(Expense, Expenses, ExpenseDetailsView) {
 			
 			self.expenses = new Expenses();

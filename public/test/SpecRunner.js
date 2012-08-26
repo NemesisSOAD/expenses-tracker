@@ -6,27 +6,34 @@ function merge_options(obj1,obj2){
 }
 
 var paths = merge_options(requireConfig.paths, {
-		jasmine: '../test/lib/jasmine-1.2.0/jasmine',
-		'jasmine-html': '../test/lib/jasmine-1.2.0/jasmine-html',
-		'sinon': '../test/lib/sinon-1.4.2',
-		spec: '../test/spec/',
-		memoryStorage: 'libs/utils/memoryStore'
+		'jasmine':				'../test/lib/jasmine-1.2.0/jasmine',
+		'jasmine-html':			'../test/lib/jasmine-1.2.0/jasmine-html',
+		'sinon':				'../test/lib/sinon-1.4.2',
+		'jasmine-sinon':		'../test/lib/jasmine-sinon',
+		'spec':					'../test/spec/',
+		'memoryStorage':		'libs/utils/memoryStore'
 	});
 
 require.config({
 	baseUrl: '../js/',
 	paths: paths,
 	shim: {
-		jasmine: {
-			exports: 'jasmine'
+		'jasmine': {
+			exports:		'jasmine'
 		},
 		'jasmine-html': {
-			deps: ['jasmine'],
-			exports: 'jasmine'
+			deps:			['jasmine'],
+			exports:		'jasmine'
 		},
-		sinon: {
-			exports: 'sinon'
+		'sinon': {
+			deps:			['jasmine-html'],
+			exports:		'sinon'
+		},
+		'jasmine-sinon': {
+			deps:			['sinon'],
+			exports:		'jasmine-sinon'
 		}
+
 	},
 	waightSeconds: 30
 });
@@ -37,10 +44,10 @@ var specs = ['spec/models/ExpenseSpec',
 			];
 
 require(['jquery',
-	'memoryStorage',
 	'jasmine-html',
-	'sinon'
-], function($, storage, jasmine, sinon){
+	'sinon',
+	'jasmine-sinon'
+], function($, jasmine){
 
 	var jasmineEnv = jasmine.getEnv();
 	jasmineEnv.updateInterval = 1000;
