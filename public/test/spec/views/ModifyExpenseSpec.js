@@ -41,7 +41,7 @@ describe('View :: ExpenseDetailsView', function() {
 		this.detailsView.remove(); 
 	});
 
-	describe('Events Handler', function() {
+	describe('when save existing expense', function() {
 		it('should display correct expense', function() {
 			expect(this.detailsView.$('#name').val()).toEqual(this.expense.get('name'));
 			expect(this.detailsView.$('#description').val()).toEqual(this.expense.get('description'));

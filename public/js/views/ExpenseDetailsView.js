@@ -41,7 +41,7 @@ define([
 		},
 
 		render: function () {
-			this.expensesList = this.options.expensesPage ? this.options.expensesPage.sortedList : undefined;
+			this.expensesList = this.options.expensesList;
 			this.oldModel = this.model.toJSON();
 
 			this.initializeTemplate();

@@ -37,26 +37,29 @@ define([
 		goToDashboard: function(){
 			this.expensesPage = this.expensesPage || new ExpensesPage();
 			this.slidePage(this.expensesPage);
+
+			this.headerView.selectMenuItem();
 		},
 
 		expenseDetails: function(id){
 			var expense = this.expensesPage.expenses.get(id);
 			this.createExpenseDetailsView(expense);
-			
-			//add hidden dialog content
 			this.slidePage(this.expenseDetailsPage);
+
+			this.headerView.selectMenuItem('add-menu');
 		},
 
 		addExpense: function(){
 			this.createExpenseDetailsView(new Expense());
-			
-			//add hidden dialog content
 			this.slidePage(this.expenseDetailsPage);
+
+			this.headerView.selectMenuItem('add-menu');
 		},
 
 		goToAbout: function(){
 			this.aboutPage = this.aboutPage || new AboutPage();
 			this.slidePage(this.aboutPage);
+			this.headerView.selectMenuItem('about-menu');
 		},
 
 		//sliding pages
@@ -98,7 +101,7 @@ define([
 		createExpenseDetailsView: function(model){
 			this.expenseDetailsPage = this.expenseDetailsPage || new ExpenseDetailsView();
 			this.expenseDetailsPage.model = model;
-			this.expenseDetailsPage.options = {expensesPage: this.expensesPage};
+			this.expenseDetailsPage.options = {expensesList: this.expensesPage ? this.expensesPage.sortedList : undefined};
 		}
 
 	});

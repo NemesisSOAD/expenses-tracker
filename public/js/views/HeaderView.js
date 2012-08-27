@@ -17,16 +17,10 @@ define([
 			return this;
 		},
 
-		events: {
-			'click ul.nav li a':          'selectMenuItem'
-		},
-
-		selectMenuItem: function (event) {
-			var parent = this.$(event.srcElement).closest('li');
-			
-			if (!parent.hasClass('dropdown')){
-				this.$('.nav li').removeClass('active');
-				parent.addClass('active');
+		selectMenuItem: function (menuItem) {
+			this.$('.nav li').removeClass('active');
+			if (menuItem) {
+				$('.' + menuItem).addClass('active');
 			}
 		}
 

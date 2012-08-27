@@ -33,7 +33,7 @@ describe('View :: ExpenseDetailsView', function() {
 		this.view.remove(); 
 	});
 
-	describe('Events Handler', function() {
+	describe('when create new expense', function() {
 		it('should fail to create empty expense', function() {
 			var storeCount = store.findAll().length;
 
