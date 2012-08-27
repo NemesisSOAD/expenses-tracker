@@ -1,8 +1,8 @@
-var connectionString = 'jDmc:admin@ds037007.mongolab.com:37007/expenses';
+var config = require('./config').config;
 
 var express = require('express'),
 	_ = require('underscore'),
-	db = require('mongojs').connect(connectionString),
+	db = require('mongojs').connect(config.mongoDb.connectionString),
 	expenses = db.collection('expenses');
 
 var app = express();
@@ -98,5 +98,5 @@ app.delete('/api/expenses/:id', function(req, res) {
 	});
 });
 
-app.listen(3000);
+app.listen(config.app.port);
 console.log('Listening on port 3000');
