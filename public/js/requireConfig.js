@@ -6,7 +6,7 @@ var requireConfig = {
 		bootstrap: 'libs/bootstrap/bootstrap',
 		backboneValidation: 'libs/backbone/backbone.validation',
 		backboneValidationBootstrap: 'libs/backbone/backbone.validation.bootstrap',
-		utils: 'libs/utils/utils',
+		utils: 'utils/utils',
 		template: 'libs/require/text',
 		templates: '../templates',
 

@@ -11,7 +11,7 @@ var paths = merge_options(requireConfig.paths, {
 		'sinon':				'../test/lib/sinon-1.4.2',
 		'jasmine-sinon':		'../test/lib/jasmine-sinon',
 		'spec':					'../test/spec/',
-		'memoryStorage':		'libs/utils/memoryStore'
+		'memoryStorage':		'utils/memoryStore'
 	});
 
 require.config({
