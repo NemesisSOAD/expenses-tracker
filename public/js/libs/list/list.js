@@ -95,7 +95,7 @@ events = {
                         this.index(itemsToIndex, valueNames);
                     }
                 }
-                if (values !== undefined) {
+                if (values !== undefined && values[0]) {
                     self.add(values);
                 }
             },
@@ -571,8 +571,10 @@ List.prototype.templateEngines.standard = function(list, settings) {
                 }
             }
         }
-        else 
-            item.elm.innerHTML = $(_.template(settings.item)(values)).html();
+        else{
+            var itemModel = _.isEmpty(values) ? settings.defaultItem : values; 
+            item.elm.innerHTML = $(_.template(settings.item)(itemModel)).html();
+        }
     };
 
     this.create = function(item) {
@@ -588,8 +590,10 @@ source for new items */
             item.elm = newItem;
             templater.set(item, item.values());
         }
-        else
-            item.elm = $(_.template(settings.item)(item.values()))[0];
+        else{
+            var itemModel = _.isEmpty(item.values()) ? settings.defaultItem : item.values(); 
+            item.elm = $(_.template(settings.item)(itemModel))[0];
+        }
     };
     this.remove = function(item) {
         listSource.removeChild(item.elm);
