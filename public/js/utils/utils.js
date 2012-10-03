@@ -59,6 +59,7 @@ define([
 				SetProperyValue('categoryName', selectedCategory.Title);
 
 			SetProperyValue('dateCreated', new Date(Date.parse(GetProperyValue('dateCreated'))));
+			SetProperyValue('dateTicks', new Date(Date.parse(GetProperyValue('dateCreated'))).getTime());
 			SetProperyValue('dateCreatedFormat', new Date(Date.parse(GetProperyValue('dateCreated'))).format('j M Y, H:i'));
 
 			function SetProperyValue(propertyName, value){
