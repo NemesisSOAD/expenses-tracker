@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'models/Expense',
-	'collections/Expenses',
+	'models/Expenses',
 	'views/Expenses/ListHeaderView',
 	'template!templates/Expenses/expense-item.html',
 	'template!templates/Expenses/expenses-page.html',

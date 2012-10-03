@@ -11,7 +11,7 @@ describe('View :: ExpenseDetailsView', function() {
 
 		require([
 			'models/Expense',
-			'collections/Expenses',
+			'models/Expenses',
 			'views/ExpenseDetailsView',
 			'backboneValidation',
 			'bootstrap',

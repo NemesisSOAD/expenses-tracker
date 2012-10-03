@@ -12,7 +12,7 @@ define([
 		urlRoot : 'api/expenses',
 
 		defaults: {
-			id: 				0,
+			id: 				null,
 			_id: 				null,
 			name: 				'',
 			dateCreated: 		new Date(),
