@@ -2,14 +2,14 @@
 
 <h2>Quick links</h2>
 
-Launch live version on <a href="http://www.expenses.nodejitsu.com" target="_blank">nojitsu</a></br>
-Launch live <a href="http://www.expenses.nodejitsu.com/test" target="_blank">tests</a></br>
+Launch live version on <a href="http://www.expenses.nodejitsu.com" target="_blank">nojitsu</a><br/>
+Launch live <a href="http://www.expenses.nodejitsu.com/test" target="_blank">tests</a><br/>
 
 <h2>Task description</h2>
 
 <b>As a regular guy I want to track my expenses</b>
-</br>
-</br>
+<br/>
+<br/>
 
 story1 "as a guy I want to be able to easily create/modify/delete an expense"<br/>
 story2 "as a guy I want to have an overview/list of my all expenses with total costs at the bottom"<br/>
