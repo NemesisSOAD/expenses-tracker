@@ -2,12 +2,13 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'models/Expense',
 	'collections/Expenses',
 	'views/Expenses/ListHeaderView',
 	'template!templates/Expenses/expense-item.html',
 	'template!templates/Expenses/expenses-page.html',
 	'utils'
-], function($, _, Backbone, Expenses, ListHeaderView, expenseTemplate, viewTemplate, utils) {
+], function($, _, Backbone, Expense, Expenses, ListHeaderView, expenseTemplate, viewTemplate, utils) {
 
 	var ExpensesPage = Backbone.View.extend({
 
@@ -67,6 +68,7 @@ define([
 			var listValues = _(models).map(function(item, index){ return item.toJSON(); });
 
 			if (!this.sortedList){
+
 				var pagingOptions = {
 					name: 'paging',
 					innerWindow: 2,
@@ -88,7 +90,8 @@ define([
 					plugins: [
 						['paging', pagingOptions],
 						['fuzzySearch', fuzzyOptions]
-					]
+					],
+					defaultItem: new Expense().toJSON()
 				};
 
 				this.sortedList = new List(this.$expensesTable[0], options, listValues);
@@ -96,16 +99,18 @@ define([
 			}
 			else{
 				this.sortedList.clear();
-				this.sortedList.add(listValues);
-				//this.sortedList.update();
+				listValues.length && this.sortedList.add(listValues);
 			}
 			
-			this.applySortedListOptions();
+			listValues.length && this.applySortedListOptions();
 		},
 
 		applySortedListOptions: function(){
-			this.runPaidfilter({filterId: this.listHeaderView.activePaidFilter});
-			this.runFuzzySearch({searchWord: this.listHeaderView.activeSearchWord});
+			this.listHeaderView.defaultPaidFilter != this.listHeaderView.activePaidFilter 
+			&& this.runPaidfilter({filterId: this.listHeaderView.activePaidFilter});
+
+			this.listHeaderView.activeSearchWord 
+			&& this.runFuzzySearch({searchWord: this.listHeaderView.activeSearchWord});
 			
 			var sortedColumn = this.listHeaderView.sortedColumn;
 			sortedColumn && this.sortedList.sort(sortedColumn.name, { asc: sortedColumn.asc });

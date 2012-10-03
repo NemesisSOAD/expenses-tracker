@@ -18,7 +18,8 @@ define([
 			this.template = _.template(viewTemplate);
 
 			this.paidFilters = ['Unpaid', 'Pain/Unpaid', 'Paid'];
-			this.activePaidFilter = 1;
+			this.defaultPaidFilter = this.activePaidFilter = 1;
+			
 			this.activeSearchWord = '';
 
 			this.render();

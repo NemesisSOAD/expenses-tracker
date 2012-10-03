@@ -12,7 +12,8 @@ define([
 		urlRoot : 'api/expenses',
 
 		defaults: {
-			id: 				null,
+			id: 				0,
+			_id: 				null,
 			name: 				'',
 			dateCreated: 		new Date(),
 			dateCreatedFormat:	'',
@@ -20,7 +21,8 @@ define([
 			categoryName:		'',
 			description: 		'',
 			paid:				false,
-			cost:				0
+			cost:				0,
+			number:				0
 		},
 
 		parse: function(response, xhr) {
