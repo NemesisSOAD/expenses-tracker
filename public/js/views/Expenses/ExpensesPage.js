@@ -101,7 +101,7 @@ define([
 				this.sortedList.clear();
 				listValues.length && this.sortedList.add(listValues);
 			}
-			
+			this.sortedList.update();
 			listValues.length && this.applySortedListOptions();
 		},
 
