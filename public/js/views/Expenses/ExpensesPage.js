@@ -96,12 +96,13 @@ define([
 
 				this.sortedList = new List(this.$expensesTable[0], options, listValues);
 				this.sortedList.on('updated', function() { self.calculateTotalCost(); });
+				this.calculateTotalCost();
 			}
 			else{
 				this.sortedList.clear();
 				listValues.length && this.sortedList.add(listValues);
 			}
-			this.sortedList.update();
+
 			listValues.length && this.applySortedListOptions();
 		},
 
