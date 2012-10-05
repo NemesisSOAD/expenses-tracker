@@ -25,3 +25,5 @@ To run client tests
 http://localhost:3000/test
 
 Application will be available at http://localhost:3000/ by default. You can change the port in config.js
+
+Supported browsers - <b>Chrome</b>, <b>Safari</b>
